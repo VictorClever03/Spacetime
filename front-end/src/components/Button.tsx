@@ -1,6 +1,6 @@
 interface ButtonProps {
-  title: String;
+  title: string
 }
 export function Button(props: ButtonProps) {
-  return <p>{props.title}</p>;
+  return <p>{props.title}</p>
 }

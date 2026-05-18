@@ -1,36 +1,36 @@
 /* eslint-disable prettier/prettier */
-import "./globals.css";
-import type { Metadata } from "next";
+import './globals.css'
+import type { Metadata } from 'next'
 import {
   Roboto_Flex as Roboto,
   Bai_Jamjuree as BaiJamjuree,
-} from "next/font/google";
-import { cookies } from "next/headers";
-import { Copyright } from "@/components/Copyright";
-import { Hero } from "@/components/Hero";
-import { SignIn } from "@/components/SignIn";
-import { Stripes } from "@/components/Stripes";
-import { Profile } from "@/components/Profile";
+} from 'next/font/google'
+import { cookies } from 'next/headers'
+import { Copyright } from '@/components/Copyright'
+import { Hero } from '@/components/Hero'
+import { SignIn } from '@/components/SignIn'
+import { Stripes } from '@/components/Stripes'
+import { Profile } from '@/components/Profile'
 
-const roboto = Roboto({ subsets: ["latin"], variable: "--font-roboto" });
+const roboto = Roboto({ subsets: ['latin'], variable: '--font-roboto' })
 const baiJamjuree = BaiJamjuree({
-  subsets: ["latin"],
-  weight: "700",
-  variable: "--font-bai-jamjuree",
-});
+  subsets: ['latin'],
+  weight: '700',
+  variable: '--font-bai-jamjuree',
+})
 
 export const metadata: Metadata = {
-  title: "NLW Spacetime",
+  title: 'NLW Spacetime',
   description:
-    "Uma cápsula do tempo construido com React, Next.Js, Tailwindcss e typescript",
-};
+    'Uma cápsula do tempo construido com React, Next.Js, Tailwindcss e typescript',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const isAuthenticated = cookies().has("token");
+  const isAuthenticated = cookies().has('token')
   return (
     <html lang="en">
       <body
@@ -62,5 +62,5 @@ export default function RootLayout({
         </main>
       </body>
     </html>
-  );
+  )
 }
