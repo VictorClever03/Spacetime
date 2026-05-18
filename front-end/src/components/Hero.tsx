@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import nlwLogo from '../assets/nlw-spacetime-logo.svg'
+import Image from "next/image";
+import nlwLogo from "../assets/nlw-spacetime-logo.svg";
 export function Hero() {
   return (
     <div className="space-y-5">
@@ -20,5 +20,5 @@ export function Hero() {
         CADASTRAR LEMBRANÇA
       </a>
     </div>
-  )
+  );
 }

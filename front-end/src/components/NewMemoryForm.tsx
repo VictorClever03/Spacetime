@@ -1,47 +1,47 @@
-'use client'
-import { CameraIcon } from 'lucide-react'
-import { MediaPicker } from './MediaPicker'
-import { FormEvent } from 'react'
-import cookie from 'js-cookie'
-import { api } from '@/lib/api'
-import { useRouter } from 'next/navigation'
+"use client";
+import { CameraIcon } from "lucide-react";
+import { MediaPicker } from "./MediaPicker";
+import { FormEvent } from "react";
+import cookie from "js-cookie";
+import { api } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 export function NewMemoryForm() {
-  const router = useRouter()
+  const router = useRouter();
 
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const formData = new FormData(event.currentTarget)
-    const fileToUpload = formData.get('coverUrl')
+    const formData = new FormData(event.currentTarget);
+    const fileToUpload = formData.get("coverUrl");
 
-    let coverUrl = ''
+    let coverUrl = "";
 
     if (fileToUpload) {
-      const uploadFormData = new FormData()
-      uploadFormData.set('file', fileToUpload)
+      const uploadFormData = new FormData();
+      uploadFormData.set("file", fileToUpload);
 
-      const uploadResponse = await api.post('/upload', uploadFormData)
-      coverUrl = uploadResponse.data.fileUrl
+      const uploadResponse = await api.post("/upload", uploadFormData);
+      coverUrl = uploadResponse.data.fileUrl;
     }
 
-    const token = cookie.get('token')
+    const token = cookie.get("token");
 
     await api.post(
-      '/memories',
+      "/memories",
       {
         coverUrl,
-        content: formData.get('content'),
-        isPublic: formData.get('isPublic'),
+        content: formData.get("content"),
+        isPublic: formData.get("isPublic"),
       },
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       },
-    )
+    );
 
-    router.push('/')
+    router.push("/");
   }
   return (
     <form onSubmit={handleCreateMemory} className="flex flex-1 flex-col gap-2">
@@ -82,5 +82,5 @@ export function NewMemoryForm() {
         Salvar
       </button>
     </form>
-  )
+  );
 }
