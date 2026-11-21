@@ -27,8 +27,8 @@ export async function authRoutes(app: FastifyInstance) {
       }
     )
 
+    // console.log('RESPOSTA DO GITHUB:', accessTokenResponse.data)
     const { access_token } = accessTokenResponse.data
-
     const userResponse = await axios.get('https://api.github.com/user',{
       headers:{
         Authorization: `Bearer ${access_token}`
@@ -38,7 +38,7 @@ export async function authRoutes(app: FastifyInstance) {
     const userSchema = z.object({
       id: z.number(),
       login: z.string(),
-      name: z.string(),
+      name: z.string().nullable(),
       avatar_url: z.string().url(),
     })
     const userInfo = userSchema.parse(userResponse.data)
@@ -54,7 +54,7 @@ export async function authRoutes(app: FastifyInstance) {
         data:{
           githubId: userInfo.id,
           login: userInfo.login,
-          nome: userInfo.name,
+          nome: userInfo.name ?? userInfo.login,
           avatarUrl: userInfo.avatar_url,
         }
       })

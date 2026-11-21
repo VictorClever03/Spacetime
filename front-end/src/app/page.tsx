@@ -1,6 +1,6 @@
 import { EmptyMemories } from '@/components/EmptyMemories'
 import { api } from '@/lib/api'
-import { cookies, headers } from 'next/headers'
+import { cookies } from 'next/headers'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 import Image from 'next/image'

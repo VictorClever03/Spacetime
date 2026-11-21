@@ -10,7 +10,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
   })
   app.get('/memories', async (request) => {
 
-    console.log(request.user.name)
+    // console.log(request.user.name)
     const memories = await prisma.memory.findMany({
       where: {
         userId: request.user.sub
